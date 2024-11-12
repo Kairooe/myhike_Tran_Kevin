@@ -115,6 +115,14 @@ function displayCardsDynamically(collection) {
                 // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
                 // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
+                currentUser.get().then(userDoc => {
+                    //get the user name
+                    var bookmarks = userDoc.data().bookmarks;
+                    if (bookmarks.includes(docID)) {
+                       document.getElementById('save-' + docID).innerText = 'bookmark';
+                    }
+              })
+              
                 //attach to gallery, Example: "hikes-go-here"
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
